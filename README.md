@@ -31,6 +31,8 @@ Only two simple changes are needed to filter the search by language.
     @Query("{'language': ?0, $text: {$search: ?1, $language: ?0}}")
     Stream<MyDocument> findMyDocument(String language, String criteria);
 
+> Optionally add the sort parameter to order by score.
+
 ---
 ### The new search result
 

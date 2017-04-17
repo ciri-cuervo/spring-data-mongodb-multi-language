@@ -5,6 +5,7 @@ package org.ciricuervo.repository;
 
 import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.*;
+import static org.ciricuervo.repository.MyDocumentRepository.*;
 import static org.springframework.data.mongodb.core.query.Criteria.*;
 import static org.springframework.data.mongodb.core.query.Query.*;
 
@@ -70,19 +71,19 @@ public class MyDocumentRepositoryTests {
 
 	@Test
 	public void findByTermEnLanguageAbracadabra() {
-		List<MyDocument> documents = repository.findMyDocument("en", "abracadabra").collect(toList());
+		List<MyDocument> documents = repository.findMyDocument("en", "abracadabra", TEXT_SCORE_SORT).collect(toList());
 		assertThat(documents).extracting(MyDocument::getId).containsExactly(DOCUMENT_EN_ID);
 	}
 
 	@Test
 	public void findByTermEsLanguageAbracadabra() {
-		List<MyDocument> documents = repository.findMyDocument("es", "abracadabra").collect(toList());
+		List<MyDocument> documents = repository.findMyDocument("es", "abracadabra", TEXT_SCORE_SORT).collect(toList());
 		assertThat(documents).extracting(MyDocument::getId).containsExactly(DOCUMENT_ES_ID);
 	}
 
 	@Test
 	public void findByTermDeLanguageAbracadabra() {
-		List<MyDocument> documents = repository.findMyDocument("de", "abracadabra").collect(toList());
+		List<MyDocument> documents = repository.findMyDocument("de", "abracadabra", TEXT_SCORE_SORT).collect(toList());
 		assertThat(documents).extracting(MyDocument::getId).containsExactly(DOCUMENT_DE_ID);
 	}
 
